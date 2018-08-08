@@ -1,1 +1,25 @@
-theme: jekyll-theme-leap-day
+# Site settings
+title: "notebook"
+email: dong1224@gmail.com
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://dong1224.github.io/" # the base hostname & protocol for your site
+github_username: dong1224
+
+timezone: Beijing
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+
+# Build settings
+highlighter: rouge
+permalink: /:categories/:title/
+
+markdown: kramdown
+# markdown: redcarpet
+redcarpet:
+  extensions: ['fenced_code_blocks', 'tables']
+
+paginate: 25
+
+github: [metadata]
+
