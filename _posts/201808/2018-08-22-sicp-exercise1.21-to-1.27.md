@@ -56,7 +56,7 @@
 将square展开之后，每一次expmod都会迭代产生两次expmod，所以时间复杂度又回去了。
 
 ## exercise 1.27
-这些数成功的骗过了fast-prime 但是无法骗过prime?
+这些数成功的骗过了fast-prime 但是无法骗过prime
 
 ## exercise 1.28
 以后有空了再做吧。
