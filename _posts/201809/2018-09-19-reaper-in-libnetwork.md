@@ -68,7 +68,12 @@ func (nDB *NetworkDB) reapTableEntries() {
 		}
 	}
 
+进到消息处理里面gossip和bulksync入口是一样的。区别在于gossip会根据需要进行转发，而bulkysync定点发送，不需要转发。
+
+	if rebroadcast := nDB.handleTableEvent(&tEvent); rebroadcast && !isBulkSync {
+	}
 	
+
 
 唯一删除entry的地方
 
