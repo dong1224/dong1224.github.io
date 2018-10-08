@@ -33,7 +33,7 @@ With the current design in libnetwork control plane events are first sent throug
 那么一旦进入reapTableEntries 数据库就会被删除，
 也就是说最终的entry状态如果在这之前没有传播出去，那么最终的状态其实就丢了。剩下堵在网络中的状态全是过期的。
 
-func (nDB *NetworkDB) reapTableEntries() {
+	func (nDB *NetworkDB) reapTableEntries() {
 
 		if entry.reapTime > 0 {      //这里永远不会成立，往下执行下去就是删数据库
 			entry.reapTime -= reapPeriod
