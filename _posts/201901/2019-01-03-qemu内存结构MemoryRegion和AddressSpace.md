@@ -121,6 +121,16 @@ addr的由来则是
 	 QTAILQ_ENTRY(AddressSpace) address_spaces_link;
 	};
 	
+### MemoryRegion 类型
+
+可将 MemoryRegion 划分为以下三种类型：
+
+- 根级 MemoryRegion: 直接通过 memory_region_init 初始化，没有自己的内存，用于管理 subregion。如 system_memory
+- 实体 MemoryRegion: 通过 memory_region_init_ram 初始化，有自己的内存 (从 QEMU 进程地址空间中分配)，大小为 size 。
+如 ram_memory(pc.ram) 、 pci_memory(pci) 等
+- 别名 MemoryRegion: 通过 memory_region_init_alias 初始化，没有自己的内存，表示实体 MemoryRegion(如 pc.ram) 的一部分，
+通过 alias 成员指向实体 MemoryRegion，alias_offset 为在实体 MemoryRegion 中的偏移量。如 ram_below_4g 、ram_above_4g 等
+
 ## AddressSpace
 
 struct AddressSpace {
@@ -181,6 +191,8 @@ FlatView结构如下
 	 hwaddr offset_within_address_space;
 	 bool readonly;
 	};
+	
+MemoryRegionSection 指向 MemoryRegion 的一部分 ([offset_within_region, offset_within_region + size])，是注册到 KVM 的基本单位。
 	
 在下面被调用
 
